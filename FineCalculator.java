@@ -18,22 +18,12 @@ public class FineCalculator {
 	}
 	
 	public double calculateFine(LoanRecord loan) {
-		if (!isOverdue(loan)) {
-			return 0.0;
-		}
-		
+		if (!isOverdue(loan)) { return 0.0; }
 		LocalDate today = LocalDate.now();
 		long overdueDays = ChronoUnit.DAYS.between(loan.getDueDate(), today);
-		
 		return overdueDays * dailyRate;
 	}
 	
-	public void setDailyRate(double dailyRate) {
-		this.dailyRate = dailyRate;
-	}
-	
-	public double getDailyRate() {
-		return dailyRate;
-	}
-
+	public void setDailyRate(double dailyRate) { this.dailyRate = dailyRate; }
+	public double getDailyRate() { return dailyRate; }
 }

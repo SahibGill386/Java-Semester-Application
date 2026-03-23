@@ -15,19 +15,8 @@ public abstract class Account {
 		this.password = password;
 	}
 	
-	public int getAccountID() {
-		return accountID;
-	}
-	
-	public String getFullName() {
-		return fullName;
-	}
-	
-	public String getUsername() {
-		return username;
-	}
-	
-	public String getPassword() {
-		return password;
-	}
+	public int getAccountID() { return accountID; }
+	public String getFullName() { return fullName; }
+	public String getUsername() { return username; }
+	public String getPassword() { return password; }
 }

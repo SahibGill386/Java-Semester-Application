@@ -16,30 +16,16 @@ public class LoginManager {
 	
 	public boolean authenticate(String username, String password) {
 		for (Account account : database.getAllAccounts()) {
-			if (account.getUsername().equals(username) && 
-				account.getPassword().equals(password)) {
+			if (account.getUsername().equals(username) && account.getPassword().equals(password)) {
 				currentUser = account;
 				return true;
 			}
 		}
-		
 		return false;
 	}
 
-	public void logout() {
-		currentUser = null;
-	}
-	
-	public Account getCurrentUser() {
-		return currentUser;
-	}
-	
-	public boolean isLoggedIn() {
-		return currentUser != null;
-	}
-	
-	public boolean isAdmin() {
-		return currentUser instanceof Librarian;
-	}
-	
+	public void logout() { currentUser = null; }
+	public Account getCurrentUser() { return currentUser; }
+	public boolean isLoggedIn() { return currentUser != null; }
+	public boolean isAdmin() { return currentUser instanceof Librarian; }
 }

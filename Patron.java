@@ -20,31 +20,15 @@ public class Patron extends Account {
 	
 	public void payFine(double amount) {
 		totalFines -= amount;
-		if (totalFines < 0) {
-			totalFines = 0;
-		}
+		if (totalFines < 0) { totalFines = 0; }
 	}
 	
 	public void addFine(double amount) {
-		if (amount > 0) {
-			totalFines += amount;
-		}
+		if (amount > 0) { totalFines += amount; }
 	}
 	
-	public double getTotalFines() {
-		return totalFines;
-	}
-	
-	public List<LoanRecord> getCurrentLoans() {
-		return currentLoans;
-	}
-	
-	public void addLoan(LoanRecord loan) {
-		currentLoans.add(loan);
-	}
-	
-	public void returnLoan(LoanRecord loan) {
-		currentLoans.remove(loan);
-	}
-
+	public double getTotalFines() { return totalFines; }
+	public List<LoanRecord> getCurrentLoans() { return currentLoans; }
+	public void addLoan(LoanRecord loan) { currentLoans.add(loan); }
+	public void returnLoan(LoanRecord loan) { currentLoans.remove(loan); }
 }

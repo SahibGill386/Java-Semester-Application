@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="15" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.GUIController" style="-fx-padding: 20;">
+ 
+    <Label fx:id="statusLabel" text="Welcome to the Library Management System" style="-fx-font-weight: bold; -fx-text-fill: blue;"/>
+
+    <TitledPane text="Search Inventory" collapsible="false">
+        <VBox spacing="10">
+            <HBox spacing="10">
+                <TextField fx:id="searchField" promptText="Enter title or author..." prefWidth="300"/>
+                <Button text="Search Title" onAction="#handleSearchTitle"/>
+                <Button text="Search Author" onAction="#handleSearchAuthor"/>
+                <Button text="View All" onAction="#handleViewAll"/>
+            </HBox>
+            <TextArea fx:id="displayArea" prefHeight="150" editable="false"/>
+        </VBox>
+    </TitledPane>
+
+    <TitledPane text="Librarian Access" collapsible="false">
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <TextField fx:id="userField" promptText="Username (e.g., admin)"/>
+            <PasswordField fx:id="passField" promptText="Password"/>
+            <Button text="Login" onAction="#handleLogin"/>
+            <Button text="Logout" onAction="#handleLogout"/>
+        </HBox>
+    </TitledPane>
+
+    <TitledPane text="Checkout &amp; Returns (Librarian Only)" collapsible="false">
+        <VBox spacing="10">
+            <HBox spacing="10">
+                <TextField fx:id="patronIdField" promptText="Patron Username"/>
+                <TextField fx:id="bookIdField" promptText="Book ID"/>
+                <Button text="Checkout Book" onAction="#handleCheckout"/>
+                <Button text="Return Book" onAction="#handleReturn"/>
+            </HBox>
+        </VBox>
+    </TitledPane>
+</VBox>

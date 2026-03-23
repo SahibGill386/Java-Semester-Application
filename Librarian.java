@@ -11,45 +11,31 @@ public class Librarian extends Account {
 	}
 	
 	public boolean processCheckout(Patron patron, Book book) {
-		
 		if (!book.isAvailable() || !patron.canBorrow()) {
 			return false;
 		}
-		
 		LoanRecord loan = new LoanRecord(patron, book, LocalDate.now(), LocalDate.now().plusDays(14));
-		
 		book.setRented(true);
-		
 		patron.addLoan(loan);
-		
 		return true;
 	}
 	
 	public boolean processReturn(Patron patron, Book book, FineCalculator calculator) {
 		LoanRecord loanToReturn = null;
-		
 		for (LoanRecord loan : patron.getCurrentLoans()) {
 			if (loan.getBook().equals(book)) {
 				loanToReturn = loan;
 				break;
 			}
 		}
-		
-		if (loanToReturn == null) {
-			return false;
-		}
-		
+		if (loanToReturn == null) { return false; }
 		if (calculator.isOverdue(loanToReturn)) {
 			double fine = calculator.calculateFine(loanToReturn);
 			patron.payFine(fine);
 		}
-		
 		book.setRented(false);
-		
 		patron.returnLoan(loanToReturn);
-		
 		return true;
-		
 	}
 	
 	public void modifyInventory(LibraryDatabase database, Book book, boolean add) {
@@ -59,5 +45,4 @@ public class Librarian extends Account {
 			database.removeBook(book);
 		}
 	}
-
 }
